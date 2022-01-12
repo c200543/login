@@ -10,6 +10,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $dbh = db_conn();
         try{
+          
+              
    	        $sql = 'INSERT INTO members SET email=:email,user=:name,password=:password,picture=:picture,createdate=NOW()';
             $stmt = $dbh->prepare($sql);
             $stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -51,7 +53,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
 <div id="wrap">
   <div id="head">
-    <h1>会員登録</h1>
+    <h1>会員登録</h1> 
+      <?php 
+          
+             
+             echo($_SESSION['join']['password']); ?>
   </div>
   <div id="content">
 		<form action="" method="POST">
